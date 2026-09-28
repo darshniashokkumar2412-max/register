@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <aside class="side" aria-label="Preview of your student card">
+      <h1>Student registration</h1>
+      <p class="lead">Fill in your details. Your student card updates as you type.</p>
+
+      <div class="card" aria-hidden="true">
+        <div class="card-top">
+          <span class="card-school">Northfield College</span>
+          <span class="card-year" id="pvYear">Year –</span>
+        </div>
+        <div class="card-avatar" id="pvAvatar">?</div>
+        <div class="card-name" id="pvName">Your name</div>
+        <div class="card-course" id="pvCourse">Course not selected</div>
+        <dl class="card-meta">
+          <div><dt>Email</dt><dd id="pvEmail">–</dd></div>
+          <div><dt>Phone</dt><dd id="pvPhone">–</dd></div>
+        </dl>
+      </div>
+
+      <div class="progress" role="status">
+        <div class="bar"><span id="barFill"></span></div>
+        <p id="barText">0 of 10 required fields done</p>
+      </div>
+    </aside>
+
+    <section class="main">
+      <form id="regForm" novalidate>
+        <fieldset>
+          <legend>Personal details</legend>
+          <div class="grid">
+            <div class="field full">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="dob">Date of birth</label>
+              <input id="dob" name="dob" type="date" required>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="gender">Gender</label>
+              <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Other</option>
+                <option>Prefer not to say</option>
+              </select>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" placeholder="10 digits" autocomplete="tel" required>
+              <small class="err" aria-live="polite"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Course</legend>
+          <div class="grid">
+            <div class="field">
+              <label for="course">Department</label>
+              <select id="course" name="course" required>
+                <option value="">Select</option>
+                <option>Computer Science</option>
+                <option>Electronics</option>
+                <option>Mechanical Engineering</option>
+                <option>Civil Engineering</option>
+                <option>Business Administration</option>
+                <option>Arts and Humanities</option>
+              </select>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="year">Year of study</label>
+              <select id="year" name="year" required>
+                <option value="">Select</option>
+                <option value="1">1st year</option>
+                <option value="2">2nd year</option>
+                <option value="3">3rd year</option>
+                <option value="4">4th year</option>
+              </select>
+              <small class="err" aria-live="polite"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Address and guardian</legend>
+          <div class="grid">
+            <div class="field full">
+              <label for="address">Home address</label>
+              <textarea id="address" name="address" rows="3" required></textarea>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="guardian">Guardian name</label>
+              <input id="guardian" name="guardian" type="text" required>
+              <small class="err" aria-live="polite"></small>
+            </div>
+            <div class="field">
+              <label for="guardianPhone">Guardian phone</label>
+              <input id="guardianPhone" name="guardianPhone" type="tel" inputmode="numeric" placeholder="10 digits" required>
+              <small class="err" aria-live="polite"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field check">
+          <label>
+            <input id="agree" name="agree" type="checkbox" required>
+            <span>I confirm the details above are correct.</span>
+          </label>
+          <small class="err" aria-live="polite"></small>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn primary">Register student</button>
+          <button type="reset" class="btn ghost" id="resetBtn">Clear form</button>
+        </div>
+      </form>
+
+      <div id="success" class="success" hidden tabindex="-1">
+        <h2>You're registered</h2>
+        <p>Your register number is <strong id="regNo"></strong>. Keep it for fee payment and exam forms.</p>
+        <button type="button" class="btn primary" id="newBtn">Register another student</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
